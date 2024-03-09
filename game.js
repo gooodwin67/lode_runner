@@ -48,6 +48,8 @@ player.canTop = false;
 player.runTop = false;
 player.runDown = false;
 
+deleteBlockMas = [];
+
 
 
 
@@ -196,15 +198,33 @@ game.newLoop('myGame', function () {
     player.runDown = true;
   }
 
-  if (key.isDown("Z")) {
+  if (key.isPress("Z")) {
     if (level[player.nowY][player.nowX - 1].b == 0 && level[player.nowY + 1][player.nowX - 1].b == 1) {
       level[player.nowY + 1][player.nowX - 1].b = 0;
+
+
+      deleteBlockMas.push([player.nowY + 1, player.nowX - 1]);
+
+      let timer = pjs.OOP.newTimer(2000, function () {
+        level[deleteBlockMas[0][0]][deleteBlockMas[0][1]].b = 1;
+        deleteBlockMas.shift();
+      })
+      timer.start();
+
     }
   }
-  if (key.isDown("C")) {
+  if (key.isPress("C")) {
     if (level[player.nowY][player.nowX + 1].b == 0 && level[player.nowY + 1][player.nowX + 1].b == 1) {
       level[player.nowY + 1][player.nowX + 1].b = 0;
     }
+
+    deleteBlockMas.push([player.nowY + 1, player.nowX + 1]);
+
+    let timer = pjs.OOP.newTimer(2000, function () {
+      level[deleteBlockMas[0][0]][deleteBlockMas[0][1]].b = 1;
+      deleteBlockMas.shift();
+    })
+    timer.start();
 
   }
 
