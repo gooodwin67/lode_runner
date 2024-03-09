@@ -33,11 +33,14 @@ let level = [
   [{ b: 1 }, { b: 1 }, { b: 1 }, { b: 1 }, { b: 1 }, { b: 1 }, { b: 1 }, { b: 1 }, { b: 1 }, { b: 1 }, { b: 1 }, { b: 1 }, { b: 1 }, { b: 1 }, { b: 1 }, { b: 1 }, { b: 1 }, { b: 1 }, { b: 1 }, { b: 1 }, { b: 1 }, { b: 1 }, { b: 1 }, { b: 1 }, { b: 1 }],
 ]
 
+let sizeOneBlock = 32;
+let playerSpeed = 1;
+
 let player = game.newRectObject({
-  x: 200,
-  y: 100,
-  w: 100,
-  h: 100,
+  x: sizeOneBlock * 2,
+  y: sizeOneBlock,
+  w: sizeOneBlock,
+  h: sizeOneBlock,
   fillColor: "green",
 });
 
@@ -55,7 +58,7 @@ deleteBlockMas = [];
 
 game.newLoop('myGame', function () {
 
-
+  //pjs.camera.follow(player, 10);
 
   for (var i = 0; i < level.length; i++) {
     for (var j = 0; j < level[i].length; j++) {
@@ -63,10 +66,10 @@ game.newLoop('myGame', function () {
       if (level[i][j].b == 0) {
 
         game.newRectObject({
-          x: 100 * j,
-          y: 100 * i,
-          w: 100,
-          h: 100,
+          x: sizeOneBlock * j,
+          y: sizeOneBlock * i,
+          w: sizeOneBlock,
+          h: sizeOneBlock,
           fillColor: "grey",
         }).draw();
 
@@ -74,10 +77,10 @@ game.newLoop('myGame', function () {
       else if (level[i][j].b == 1) {
 
         game.newRectObject({
-          x: 100 * j,
-          y: 100 * i,
-          w: 100,
-          h: 100,
+          x: sizeOneBlock * j,
+          y: sizeOneBlock * i,
+          w: sizeOneBlock,
+          h: sizeOneBlock,
           fillColor: "black",
         }).draw();
 
@@ -108,23 +111,23 @@ game.newLoop('myGame', function () {
 
   if (player.moving && !player.falling) {
     if (player.arrow == 'right' && level[player.nowY][player.nowX + 1].b != 1) {
-      player.moveTo(pjs.vector.point(player.nowX * 100 + player.w, player.nowY * 100), 7);
-      if (player.x >= player.nowX * 100 + player.w) {
+      player.moveTo(pjs.vector.point(player.nowX * sizeOneBlock + player.w, player.nowY * sizeOneBlock), playerSpeed);
+      if (player.x >= player.nowX * sizeOneBlock + player.w) {
 
         delete level[player.nowY][player.nowX].player;
         level[player.nowY][player.nowX + 1].player = true;
-        player.x = player.nowX * 100 + player.w;
+        player.x = player.nowX * sizeOneBlock + player.w;
         player.moving = false;
         player.arrow = 'false';
       }
     }
     else if (player.arrow == 'left' && level[player.nowY][player.nowX - 1].b != 1) {
-      player.moveTo(pjs.vector.point(player.nowX * 100 - player.w, player.nowY * 100), 7);
-      if (player.x <= player.nowX * 100 - player.w) {
+      player.moveTo(pjs.vector.point(player.nowX * sizeOneBlock - player.w, player.nowY * sizeOneBlock), playerSpeed);
+      if (player.x <= player.nowX * sizeOneBlock - player.w) {
 
         delete level[player.nowY][player.nowX].player;
         level[player.nowY][player.nowX - 1].player = true;
-        player.x = player.nowX * 100 - player.w;
+        player.x = player.nowX * sizeOneBlock - player.w;
         player.moving = false;
         player.arrow = 'false';
       }
@@ -134,8 +137,8 @@ game.newLoop('myGame', function () {
   if (level[player.nowY + 1][player.nowX].b != 1 && level[player.nowY + 1][player.nowX].b != 2 && !player.canTop) {
     player.falling = true;
     player.arrow = 'false';
-    player.moveTo(pjs.vector.point(player.nowX * 100, player.nowY * 100 + player.w), 3);
-    if (player.y >= player.nowY * 100 + player.w) {
+    player.moveTo(pjs.vector.point(player.nowX * sizeOneBlock, player.nowY * sizeOneBlock + player.w), playerSpeed);
+    if (player.y >= player.nowY * sizeOneBlock + player.w) {
       delete level[player.nowY][player.nowX].player;
       level[player.nowY + 1][player.nowX].player = true;
     }
@@ -149,8 +152,8 @@ game.newLoop('myGame', function () {
     player.canTop = true;
     if (player.runTop && level[player.nowY][player.nowX].b == 2) {
       player.runDown = false;
-      player.moveTo(pjs.vector.point(player.nowX * 100, player.nowY * 100 - player.w), 3);
-      if (player.y <= player.nowY * 100 - player.w) {
+      player.moveTo(pjs.vector.point(player.nowX * sizeOneBlock, player.nowY * sizeOneBlock - player.w), playerSpeed);
+      if (player.y <= player.nowY * sizeOneBlock - player.w) {
         delete level[player.nowY][player.nowX].player;
         level[player.nowY - 1][player.nowX].player = true;
         player.runTop = false;
@@ -159,8 +162,8 @@ game.newLoop('myGame', function () {
     }
     else if (player.runDown && level[player.nowY + 1][player.nowX].b != 1) {
       player.runTop = false;
-      player.moveTo(pjs.vector.point(player.nowX * 100, player.nowY * 100 + player.w), 3);
-      if (player.y >= player.nowY * 100 + player.w) {
+      player.moveTo(pjs.vector.point(player.nowX * sizeOneBlock, player.nowY * sizeOneBlock + player.w), playerSpeed);
+      if (player.y >= player.nowY * sizeOneBlock + player.w) {
         delete level[player.nowY][player.nowX].player;
         level[player.nowY + 1][player.nowX].player = true;
         player.runDown = false;
