@@ -187,131 +187,81 @@ game.newLoop('myGame', function () {
 
     enemies[i].explored = [];
 
-    var iii = 0;
-
-    //console.log(levelGraph[enemies[i].startNode[0]][enemies[i].startNode[1] + 1]);
-
-    // while (enemies[i].reachable.length > 0) {
-    //   iii++;
-    //   if (levelGraph[enemies[i].startNode[0]][enemies[i].startNode[1] + 1] == 1 && !enemies[i].explored.includes(levelGraph[enemies[i].startNode[0]][enemies[i].startNode[1] + 1])) {
-    //     if (enemies[i].startNode[0] == player.nowX && enemies[i].startNode[1] + 1 == player.nowY) {
-    //       enemies[i].pathMas.push([enemies[i].startNode[0], enemies[i].startNode[1] + 1]);
-    //     }
-    //     else {
-    //       enemies[i].reachable.push([enemies[i].startNode[0], enemies[i].startNode[1] + 1]);
-    //       enemies[i].explored.push([enemies[i].startNode[0], enemies[i].startNode[1] + 1]);
-    //       enemies[i].startNode = [enemies[i].startNode[0], enemies[i].startNode[1] + 1];
-    //     }
-
-    //   }
-    //   else if (levelGraph[enemies[i].startNode[0]][enemies[i].startNode[1] - 1] == 1 && !enemies[i].explored.includes(levelGraph[enemies[i].startNode[0]][enemies[i].startNode[1] - 1])) {
-    //     if (enemies[i].startNode[0] == player.nowX && enemies[i].startNode[1] - 1 == player.nowY) {
-    //       enemies[i].pathMas.push([enemies[i].startNode[0], enemies[i].startNode[1] - 1]);
-    //     }
-    //     else {
-    //       enemies[i].reachable.push([enemies[i].startNode[0], enemies[i].startNode[1] - 1]);
-    //       enemies[i].explored.push([enemies[i].startNode[0], enemies[i].startNode[1] - 1]);
-    //       enemies[i].startNode = [enemies[i].startNode[0], enemies[i].startNode[1] - 1];
-    //     }
-
-    //   }
-    //   else if (levelGraph[enemies[i].startNode[0] + 1][enemies[i].startNode[1]] == 1 && !enemies[i].explored.includes(levelGraph[enemies[i].startNode[0] + 1][enemies[i].startNode[1]])) {
-    //     if (enemies[i].startNode[0] + 1 == player.nowX && enemies[i].startNode[1] == player.nowY) {
-    //       enemies[i].pathMas.push([enemies[i].startNode[0] + 1, enemies[i].startNode[1]]);
-    //     }
-    //     else {
-    //       enemies[i].reachable.push([enemies[i].startNode[0] + 1, enemies[i].startNode[1]]);
-    //       enemies[i].explored.push([enemies[i].startNode[0] + 1, enemies[i].startNode[1]]);
-    //       enemies[i].startNode = [enemies[i].startNode[0] + 1, enemies[i].startNode[1]];
-    //     }
-    //   }
-    //   else if (levelGraph[enemies[i].startNode[0] - 1][enemies[i].startNode[1]] == 1 && !enemies[i].explored.includes(levelGraph[enemies[i].startNode[0] - 1][enemies[i].startNode[1]])) {
-    //     if (enemies[i].startNode[0] - 1 == player.nowX && enemies[i].startNode[1] == player.nowY) {
-    //       enemies[i].pathMas.push([enemies[i].startNode[0] - 1, enemies[i].startNode[1]]);
-    //     }
-    //     else {
-    //       enemies[i].reachable.push([enemies[i].startNode[0] - 1, enemies[i].startNode[1]]);
-    //       enemies[i].explored.push([enemies[i].startNode[0] - 1, enemies[i].startNode[1]]);
-    //       enemies[i].startNode = [enemies[i].startNode[0] - 1, enemies[i].startNode[1]];
-    //     }
-    //   }
-    //   else {
-    //     console.log(123);
-    //   }
-    //   if (iii == 100) enemies[i].reachable = [];
-    // }
 
 
 
 
 
 
-    // enemies[i].start = masLevelGraph.grid[enemies[i].nowY][enemies[i].nowX];
-    // enemies[i].end = masLevelGraph.grid[player.nowY][player.nowX];
-    // enemies[i].result = astar.search(masLevelGraph, enemies[i].start, enemies[i].end);
-
-    // if (enemies[i].result.length > 0) enemies[i].newResult = enemies[i].result;
-
-    // if (enemies[i].newResult.length > 0) {
-
-
-    //   for (var j = 0; j < enemies[i].newResult.length; j++) {
-    //     var aa = game.newRectObject({
-    //       x: sizeOneBlock * enemies[i].newResult[j].y,
-    //       y: sizeOneBlock * enemies[i].newResult[j].x,
-    //       w: sizeOneBlock,
-    //       h: sizeOneBlock,
-    //       fillColor: "blue",
-    //     });
-    //     aa.alpha = 0.1;
-    //     aa.draw();
-    //   }
-
-    //   enemies[i].enemy.moveTo(pjs.vector.point(enemies[i].newResult[1].y * sizeOneBlock, enemies[i].newResult[1].x * sizeOneBlock), 0.5);
 
 
 
-    //   if (Math.abs(Math.round((enemies[i].enemy.x) - (enemies[i].newResult[1].y * sizeOneBlock))) < 3) {
+    enemies[i].start = masLevelGraph.grid[enemies[i].nowY][enemies[i].nowX];
+    enemies[i].end = masLevelGraph.grid[player.nowY][player.nowX];
+    enemies[i].result = astar.search(masLevelGraph, enemies[i].start, enemies[i].end);
 
-    //     enemies[i].nowX = enemies[i].newResult[0].y;
-    //   }
+    if (enemies[i].result.length > 0) enemies[i].newResult = enemies[i].result;
 
-    //   if (Math.abs(Math.round((enemies[i].newResult[1].x * sizeOneBlock) - (enemies[i].enemy.y))) < 3) {
-
-    //     enemies[i].nowY = enemies[i].newResult[0].x;
-    //   }
-    // }
+    if (enemies[i].newResult.length > 0) {
 
 
-  }
-
-
-  for (var i = 0; i < levelGraph.length; i++) {
-    for (var j = 0; j < levelGraph[i].length; j++) {
-      if (levelGraph[i][j] == 1) {
+      for (var j = 0; j < enemies[i].newResult.length; j++) {
         var aa = game.newRectObject({
-          x: sizeOneBlock * j,
-          y: sizeOneBlock * i,
+          x: sizeOneBlock * enemies[i].newResult[j].y,
+          y: sizeOneBlock * enemies[i].newResult[j].x,
           w: sizeOneBlock,
           h: sizeOneBlock,
           fillColor: "blue",
         });
-        aa.alpha = 0.3;
+        aa.alpha = 0.1;
         aa.draw();
       }
-      if (levelGraph[i][j] == 2) {
-        var aa = game.newRectObject({
-          x: sizeOneBlock * j,
-          y: sizeOneBlock * i,
-          w: sizeOneBlock,
-          h: sizeOneBlock,
-          fillColor: "yellow",
-        });
-        aa.alpha = 0.3;
-        aa.draw();
+
+      //enemies[i].enemy.moveTo(pjs.vector.point(enemies[i].newResult[1].y * sizeOneBlock, enemies[i].newResult[1].x * sizeOneBlock), 0.5);
+
+
+
+      if (Math.abs(Math.round((enemies[i].enemy.x) - (enemies[i].newResult[1].y * sizeOneBlock))) < 3) {
+
+        enemies[i].nowX = enemies[i].newResult[0].y;
+      }
+
+      if (Math.abs(Math.round((enemies[i].newResult[1].x * sizeOneBlock) - (enemies[i].enemy.y))) < 3) {
+
+        enemies[i].nowY = enemies[i].newResult[0].x;
       }
     }
+
+
   }
+
+
+  // for (var i = 0; i < levelGraph.length; i++) {
+  //   for (var j = 0; j < levelGraph[i].length; j++) {
+  //     if (levelGraph[i][j] == 1) {
+  //       var aa = game.newRectObject({
+  //         x: sizeOneBlock * j,
+  //         y: sizeOneBlock * i,
+  //         w: sizeOneBlock,
+  //         h: sizeOneBlock,
+  //         fillColor: "blue",
+  //       });
+  //       aa.alpha = 0.3;
+  //       aa.draw();
+  //     }
+  //     if (levelGraph[i][j] == 2) {
+  //       var aa = game.newRectObject({
+  //         x: sizeOneBlock * j,
+  //         y: sizeOneBlock * i,
+  //         w: sizeOneBlock,
+  //         h: sizeOneBlock,
+  //         fillColor: "yellow",
+  //       });
+  //       aa.alpha = 0.3;
+  //       aa.draw();
+  //     }
+  //   }
+  // }
 
 
 
