@@ -14,21 +14,21 @@ var key = pjs.keyControl.initControl();
 let level = [
   [{ b: 9 }, { b: 9 }, { b: 9 }, { b: 9 }, { b: 9 }, { b: 9 }, { b: 9 }, { b: 9 }, { b: 9 }, { b: 9 }, { b: 9 }, { b: 9 }, { b: 9 }, { b: 9 }, { b: 9 }, { b: 9 }, { b: 9 }, { b: 9 }, { b: 9 }, { b: 9 }, { b: 9 }, { b: 9 }, { b: 9 }, { b: 9 }, { b: 9 }],
   [{ b: 9 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 9 }],
-  [{ b: 9 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 9 }],
+  [{ b: 9 }, { b: 9 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 9 }],
   [{ b: 9 }, { b: 0 }, { b: 0, player: true }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 9 }],
-  [{ b: 9 }, { b: 0 }, { b: 1 }, { b: 1 }, { b: 1 }, { b: 2 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 9 }],
+  [{ b: 9 }, { b: 9 }, { b: 1 }, { b: 1 }, { b: 1 }, { b: 2 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 9 }],
   [{ b: 9 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 2 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 9 }],
+  [{ b: 9 }, { b: 9 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 2 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 9 }],
   [{ b: 9 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 2 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 9 }],
-  [{ b: 9 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 2 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 9 }],
-  [{ b: 9 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 2 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 9 }],
-  [{ b: 9 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 2 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 9 }],
-  [{ b: 9 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 1 }, { b: 1 }, { b: 1 }, { b: 1 }, { b: 1 }, { b: 1 }, { b: 1 }, { b: 2 }, { b: 1 }, { b: 1 }, { b: 1 }, { b: 1 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 9 }],
-  [{ b: 9 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 2 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 9 }],
-  [{ b: 9 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 2 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0, enemy: true }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 9 }],
+  [{ b: 9 }, { b: 9 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 2 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 9 }],
+  [{ b: 9 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 2 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 2 }, { b: 0 }, { b: 9 }],
+  [{ b: 9 }, { b: 9 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 1 }, { b: 1 }, { b: 1 }, { b: 1 }, { b: 1 }, { b: 1 }, { b: 1 }, { b: 2 }, { b: 1 }, { b: 1 }, { b: 1 }, { b: 1 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 2 }, { b: 0 }, { b: 9 }],
+  [{ b: 9 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 2 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 2 }, { b: 0 }, { b: 9 }],
+  [{ b: 9 }, { b: 9 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 2 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0, enemy: true }, { b: 0 }, { b: 0 }, { b: 2 }, { b: 0 }, { b: 9 }],
   [{ b: 9 }, { b: 0 }, { b: 1 }, { b: 1 }, { b: 1 }, { b: 2 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 2 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 1 }, { b: 1 }, { b: 1 }, { b: 2 }, { b: 1 }, { b: 1 }, { b: 0 }, { b: 9 }],
-  [{ b: 9 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 2 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 2 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 2 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 9 }],
-  [{ b: 9 }, { b: 1 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 2 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 2 }, { b: 0 }, { b: 1 }, { b: 1 }, { b: 1 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 2 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 9 }],
-  [{ b: 9 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 2 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 2 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 2 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 9 }],
+  [{ b: 9 }, { b: 9 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 2 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 2 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 2 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 9 }],
+  [{ b: 9 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 2 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 2 }, { b: 0 }, { b: 1 }, { b: 1 }, { b: 1 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 2 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 9 }],
+  [{ b: 9 }, { b: 9 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 2 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 2 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 2 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 9 }],
   [{ b: 9 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 2 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 2 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 2 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 9 }],
   [{ b: 1 }, { b: 1 }, { b: 1 }, { b: 1 }, { b: 1 }, { b: 1 }, { b: 1 }, { b: 1 }, { b: 1 }, { b: 1 }, { b: 1 }, { b: 1 }, { b: 1 }, { b: 1 }, { b: 1 }, { b: 1 }, { b: 1 }, { b: 1 }, { b: 1 }, { b: 1 }, { b: 1 }, { b: 1 }, { b: 1 }, { b: 1 }, { b: 9 }],
   [{ b: 9 }, { b: 9 }, { b: 9 }, { b: 9 }, { b: 9 }, { b: 9 }, { b: 9 }, { b: 9 }, { b: 9 }, { b: 9 }, { b: 9 }, { b: 9 }, { b: 9 }, { b: 9 }, { b: 9 }, { b: 9 }, { b: 9 }, { b: 9 }, { b: 9 }, { b: 9 }, { b: 9 }, { b: 9 }, { b: 9 }, { b: 9 }, { b: 9 }],
@@ -113,7 +113,7 @@ for (var i = 0; i < level.length; i++) {
             w: sizeOneBlock,
             h: sizeOneBlock,
             fillColor: "red",
-          }), nowX: j, nowY: i, canGo: true, newResult: [], startPos: 0, masPath: 0, canGo: [], delMas: [], testMas: []
+          }), nowX: j, nowY: i, canGo: true, newResult: [], startPos: 0, masPath: 10, canGo: [], delMas: [], testMas: []
         }
       )
     }
@@ -121,6 +121,85 @@ for (var i = 0; i < level.length; i++) {
 }
 
 enemies[0].canGo.push([enemies[0].nowY, enemies[0].nowX]);
+
+
+
+//while(enemies[0].canGo[0][0] != player.nowY || enemies[0].canGo[0][1] != player.nowX) {
+  for(var oo = 0; oo < 200; oo++) {
+
+    setTimeout(function timer() {
+    
+    
+
+    console.log(enemies[0].canGo );
+
+    //enemies[0].testMas.push([enemies[0].canGo[0][0]+1, enemies[0].canGo[0][1]] );
+    if (JSON.stringify(enemies[0].delMas).indexOf(JSON.stringify([enemies[0].canGo[0][0], enemies[0].canGo[0][1]-1])) == -1) {
+      if ((level[enemies[0].canGo[0][0]+1][enemies[0].canGo[0][1]].b == 1 || level[enemies[0].canGo[0][0]+1][enemies[0].canGo[0][1]].b == 2) && (level[enemies[0].canGo[0][0]][enemies[0].canGo[0][1]-1].b == 0 || level[enemies[0].canGo[0][0]][enemies[0].canGo[0][1]-1].b == 2) && (level[enemies[0].canGo[0][0]][enemies[0].canGo[0][1]].b != 2 || level[enemies[0].canGo[0][0]+1][enemies[0].canGo[0][1]].b != 1)) {
+        enemies[0].testMas.push([enemies[0].canGo[0][0], enemies[0].canGo[0][1]-1]);
+        enemies[0].canGo.push([enemies[0].canGo[0][0], enemies[0].canGo[0][1]-1]);
+      }
+    }
+    if (JSON.stringify(enemies[0].delMas).indexOf(JSON.stringify([enemies[0].canGo[0][0], enemies[0].canGo[0][1]+1])) == -1) {
+      if ((level[enemies[0].canGo[0][0]+1][enemies[0].canGo[0][1]].b == 1 || level[enemies[0].canGo[0][0]+1][enemies[0].canGo[0][1]].b == 2) && (level[enemies[0].canGo[0][0]][enemies[0].canGo[0][1]+1].b == 0 || level[enemies[0].canGo[0][0]][enemies[0].canGo[0][1]+1].b == 2) && (level[enemies[0].canGo[0][0]][enemies[0].canGo[0][1]].b != 2 || level[enemies[0].canGo[0][0]+1][enemies[0].canGo[0][1]].b != 1)) {
+        enemies[0].testMas.push([enemies[0].canGo[0][0], enemies[0].canGo[0][1]+1]);
+        enemies[0].canGo.push([enemies[0].canGo[0][0], enemies[0].canGo[0][1]+1]);
+      }
+    }
+    if (JSON.stringify(enemies[0].delMas).indexOf(JSON.stringify([enemies[0].canGo[0][0]+1, enemies[0].canGo[0][1]])) == -1) {
+      if ((level[enemies[0].canGo[0][0]+1][enemies[0].canGo[0][1]].b == 0 || level[enemies[0].canGo[0][0]+1][enemies[0].canGo[0][1]].b == 2)) {
+        enemies[0].testMas.push([enemies[0].canGo[0][0]+1, enemies[0].canGo[0][1]]);
+        enemies[0].canGo.push([enemies[0].canGo[0][0]+1, enemies[0].canGo[0][1]]);
+      }
+    }
+    if (JSON.stringify(enemies[0].delMas).indexOf(JSON.stringify([enemies[0].canGo[0][0]-1, enemies[0].canGo[0][1]])) == -1) {
+      if ((level[enemies[0].canGo[0][0]][enemies[0].canGo[0][1]].b == 2 && level[enemies[0].canGo[0][0]-1][enemies[0].canGo[0][1]].b == 2) || (level[enemies[0].canGo[0][0]][enemies[0].canGo[0][1]].b == 2 && level[enemies[0].canGo[0][0]-1][enemies[0].canGo[0][1]].b == 0)) {
+        enemies[0].testMas.push([enemies[0].canGo[0][0]-1, enemies[0].canGo[0][1]]);
+        enemies[0].canGo.push([enemies[0].canGo[0][0]-1, enemies[0].canGo[0][1]]);
+      }
+    }
+
+    enemies[0].delMas.push(enemies[0].canGo[0]);
+    enemies[0].canGo.shift();
+
+    }, oo * 0);
+
+    // if (JSON.stringify(enemies[0].delMas).indexOf(JSON.stringify([enemies[0].canGo[0][0], enemies[0].canGo[0][1]-1])) == -1) {
+    //   if (levelGraph[enemies[0].canGo[0][0]][enemies[0].canGo[0][1]-1] == 1 || levelGraph[enemies[0].canGo[0][0]][enemies[0].canGo[0][1]-1] == 2) {
+    //     enemies[0].canGo.push([enemies[0].canGo[0][0], enemies[0].canGo[0][1]-1])
+    //     enemies[0].testMas.push([enemies[0].canGo[0][0], enemies[0].canGo[0][1]-1]);
+    //   }
+    // }
+    
+    
+    // if (JSON.stringify(enemies[0].delMas).indexOf(JSON.stringify([enemies[0].canGo[0][0], enemies[0].canGo[0][1]+1])) == -1) {
+    //   if (levelGraph[enemies[0].canGo[0][0]][enemies[0].canGo[0][1]+1] == 1 || levelGraph[enemies[0].canGo[0][0]][enemies[0].canGo[0][1]+1] == 2) {
+    //     enemies[0].canGo.push([enemies[0].canGo[0][0], enemies[0].canGo[0][1]+1])
+    //     enemies[0].testMas.push([enemies[0].canGo[0][0], enemies[0].canGo[0][1]+1]);
+    //   }
+    // }
+    
+
+    
+    // if (JSON.stringify(enemies[0].delMas).indexOf(JSON.stringify([enemies[0].canGo[0][0]+1, enemies[0].canGo[0][1]])) == -1) {
+    //   if (levelGraph[enemies[0].canGo[0][0]+1][enemies[0].canGo[0][1]] == 1 || levelGraph[enemies[0].canGo[0][0]+1][enemies[0].canGo[0][1]] == 2) {
+    //     enemies[0].canGo.push([enemies[0].canGo[0][0]+1, enemies[0].canGo[0][1]])
+    //   }
+    // }
+    // if (JSON.stringify(enemies[0].delMas).indexOf(JSON.stringify([enemies[0].canGo[0][0]-1, enemies[0].canGo[0][1]])) == -1) {
+    //   if (levelGraph[enemies[0].canGo[0][0]-1][enemies[0].canGo[0][1]] == 1) {
+    //     enemies[0].canGo.push([enemies[0].canGo[0][0]-1, enemies[0].canGo[0][1]])
+    //   }
+    // }
+    
+    
+    // enemies[0].delMas.push(enemies[0].canGo[0]);
+    // enemies[0].canGo.shift();
+
+    
+  }
+  //}
+  
 
 
 game.newLoop('myGame', function () {
@@ -151,6 +230,18 @@ game.newLoop('myGame', function () {
           fillColor: "black",
         }).draw();
 
+      }
+      else if (level[i][j].b == 2) {
+
+        var lest = game.newRectObject({
+          x: sizeOneBlock * j,
+          y: sizeOneBlock * i,
+          w: sizeOneBlock,
+          h: sizeOneBlock,
+          fillColor: "white",
+        })
+        lest.draw();
+        lest.alpha = 0.01;
       }
 
       if (level[i][j].player) {
@@ -185,45 +276,47 @@ game.newLoop('myGame', function () {
     
 
 
-    while(enemies[0].canGo[0][0] != player.nowY || enemies[0].canGo[0][1] != player.nowX) {
+    // //while(enemies[0].canGo[0][0] != player.nowY || enemies[0].canGo[0][1] != player.nowX) {
+    // for(var oo = 0; oo < enemies[0].masPath; oo++) {
+
   
 
-      if (JSON.stringify(enemies[0].delMas).indexOf(JSON.stringify([enemies[0].canGo[0][0], enemies[0].canGo[0][1]-1])) == -1) {
-        if (levelGraph[enemies[0].canGo[0][0]][enemies[0].canGo[0][1]-1] == 1 || levelGraph[enemies[0].canGo[0][0]][enemies[0].canGo[0][1]-1] == 2) {
-          enemies[0].canGo.push([enemies[0].canGo[0][0], enemies[0].canGo[0][1]-1])
-          enemies[0].testMas.push([enemies[0].canGo[0][0], enemies[0].canGo[0][1]-1]);
-        }
-      }
+    //   if (JSON.stringify(enemies[0].delMas).indexOf(JSON.stringify([enemies[0].canGo[0][0], enemies[0].canGo[0][1]-1])) == -1) {
+    //     if (levelGraph[enemies[0].canGo[0][0]][enemies[0].canGo[0][1]-1] == 1 || levelGraph[enemies[0].canGo[0][0]][enemies[0].canGo[0][1]-1] == 2) {
+    //       enemies[0].canGo.push([enemies[0].canGo[0][0], enemies[0].canGo[0][1]-1])
+    //       enemies[0].testMas.push([enemies[0].canGo[0][0], enemies[0].canGo[0][1]-1]);
+    //     }
+    //   }
       
       
-      if (JSON.stringify(enemies[0].delMas).indexOf(JSON.stringify([enemies[0].canGo[0][0], enemies[0].canGo[0][1]+1])) == -1) {
-        if (levelGraph[enemies[0].canGo[0][0]][enemies[0].canGo[0][1]+1] == 1 || levelGraph[enemies[0].canGo[0][0]][enemies[0].canGo[0][1]+1] == 2) {
-          enemies[0].canGo.push([enemies[0].canGo[0][0], enemies[0].canGo[0][1]+1])
-          enemies[0].testMas.push([enemies[0].canGo[0][0], enemies[0].canGo[0][1]+1]);
-        }
-      }
+    //   if (JSON.stringify(enemies[0].delMas).indexOf(JSON.stringify([enemies[0].canGo[0][0], enemies[0].canGo[0][1]+1])) == -1) {
+    //     if (levelGraph[enemies[0].canGo[0][0]][enemies[0].canGo[0][1]+1] == 1 || levelGraph[enemies[0].canGo[0][0]][enemies[0].canGo[0][1]+1] == 2) {
+    //       enemies[0].canGo.push([enemies[0].canGo[0][0], enemies[0].canGo[0][1]+1])
+    //       enemies[0].testMas.push([enemies[0].canGo[0][0], enemies[0].canGo[0][1]+1]);
+    //     }
+    //   }
       
 
       
-      if (JSON.stringify(enemies[0].delMas).indexOf(JSON.stringify([enemies[0].canGo[0][0]+1, enemies[0].canGo[0][1]])) == -1) {
-        if (levelGraph[enemies[0].canGo[0][0]+1][enemies[0].canGo[0][1]] == 1 || levelGraph[enemies[0].canGo[0][0]+1][enemies[0].canGo[0][1]] == 2) {
-          enemies[0].canGo.push([enemies[0].canGo[0][0]+1, enemies[0].canGo[0][1]])
-        }
-      }
-      if (JSON.stringify(enemies[0].delMas).indexOf(JSON.stringify([enemies[0].canGo[0][0]-1, enemies[0].canGo[0][1]])) == -1) {
-        if (levelGraph[enemies[0].canGo[0][0]-1][enemies[0].canGo[0][1]] == 1) {
-          enemies[0].canGo.push([enemies[0].canGo[0][0]-1, enemies[0].canGo[0][1]])
-        }
-      }
+    //   if (JSON.stringify(enemies[0].delMas).indexOf(JSON.stringify([enemies[0].canGo[0][0]+1, enemies[0].canGo[0][1]])) == -1) {
+    //     if (levelGraph[enemies[0].canGo[0][0]+1][enemies[0].canGo[0][1]] == 1 || levelGraph[enemies[0].canGo[0][0]+1][enemies[0].canGo[0][1]] == 2) {
+    //       enemies[0].canGo.push([enemies[0].canGo[0][0]+1, enemies[0].canGo[0][1]])
+    //     }
+    //   }
+    //   if (JSON.stringify(enemies[0].delMas).indexOf(JSON.stringify([enemies[0].canGo[0][0]-1, enemies[0].canGo[0][1]])) == -1) {
+    //     if (levelGraph[enemies[0].canGo[0][0]-1][enemies[0].canGo[0][1]] == 1) {
+    //       enemies[0].canGo.push([enemies[0].canGo[0][0]-1, enemies[0].canGo[0][1]])
+    //     }
+    //   }
       
       
-      enemies[0].delMas.push(enemies[0].canGo[0]);
-      enemies[0].canGo.shift();
+    //   enemies[0].delMas.push(enemies[0].canGo[0]);
+    //   enemies[0].canGo.shift();
 
       
-      
-    }
-    console.log(`${enemies[0].canGo[0][1]} --- ${player.nowX}`);
+    // }
+    // //}
+    // //console.log(`${enemies[0].canGo[0][1]} --- ${player.nowX}`);
     
 
     
@@ -288,32 +381,32 @@ game.newLoop('myGame', function () {
   //}
 
 
-  for (var i = 0; i < levelGraph.length; i++) {
-    for (var j = 0; j < levelGraph[i].length; j++) {
-      if (levelGraph[i][j] == 1) {
-        var aa = game.newRectObject({
-          x: sizeOneBlock * j,
-          y: sizeOneBlock * i,
-          w: sizeOneBlock,
-          h: sizeOneBlock,
-          fillColor: "blue",
-        });
-        aa.alpha = 0.3;
-        aa.draw();
-      }
-      if (levelGraph[i][j] == 2) {
-        var aa = game.newRectObject({
-          x: sizeOneBlock * j,
-          y: sizeOneBlock * i,
-          w: sizeOneBlock,
-          h: sizeOneBlock,
-          fillColor: "yellow",
-        });
-        aa.alpha = 0.3;
-        aa.draw();
-      }
-    }
-  }
+  // for (var i = 0; i < levelGraph.length; i++) {
+  //   for (var j = 0; j < levelGraph[i].length; j++) {
+  //     if (levelGraph[i][j] == 1) {
+  //       var aa = game.newRectObject({
+  //         x: sizeOneBlock * j,
+  //         y: sizeOneBlock * i,
+  //         w: sizeOneBlock,
+  //         h: sizeOneBlock,
+  //         fillColor: "blue",
+  //       });
+  //       aa.alpha = 0.3;
+  //       aa.draw();
+  //     }
+  //     if (levelGraph[i][j] == 2) {
+  //       var aa = game.newRectObject({
+  //         x: sizeOneBlock * j,
+  //         y: sizeOneBlock * i,
+  //         w: sizeOneBlock,
+  //         h: sizeOneBlock,
+  //         fillColor: "yellow",
+  //       });
+  //       aa.alpha = 0.3;
+  //       aa.draw();
+  //     }
+  //   }
+  // }
 
   for (var i = 0; i < enemies[0].testMas.length; i++) {
     //console.log(enemies[0].canGo)
@@ -322,7 +415,7 @@ game.newLoop('myGame', function () {
       y: sizeOneBlock * enemies[0].testMas[i][0],
       w: sizeOneBlock,
       h: sizeOneBlock,
-      fillColor: "red",
+      fillColor: "green",
     });
     //zz.alpha = 0.9;
     zz.draw();
