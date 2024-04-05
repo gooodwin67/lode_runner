@@ -24,7 +24,7 @@ let level = [
   [{ b: 9 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 2 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 2 }, { b: 0 }, { b: 9 }],
   [{ b: 9 }, { b: 9 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 1 }, { b: 1 }, { b: 1 }, { b: 1 }, { b: 1 }, { b: 1 }, { b: 1 }, { b: 2 }, { b: 1 }, { b: 1 }, { b: 1 }, { b: 1 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 2 }, { b: 0 }, { b: 9 }],
   [{ b: 9 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 2 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 2 }, { b: 0 }, { b: 9 }],
-  [{ b: 9 }, { b: 9 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 2 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0, enemy: true }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 2 }, { b: 0 }, { b: 9 }],
+  [{ b: 9 }, { b: 9 }, { b: 0 }, { b: 0 }, { b: 1 }, { b: 2 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 2 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0, enemy: true }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 2 }, { b: 0 }, { b: 9 }],
   [{ b: 9 }, { b: 0 }, { b: 1 }, { b: 1 }, { b: 1 }, { b: 2 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 2 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 1 }, { b: 1 }, { b: 1 }, { b: 1 }, { b: 2 }, { b: 1 }, { b: 1 }, { b: 0 }, { b: 9 }],
   [{ b: 9 }, { b: 9 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 2 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 2 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 2 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 9 }],
   [{ b: 9 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 2 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 2 }, { b: 0 }, { b: 1 }, { b: 1 }, { b: 1 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 2 }, { b: 0 }, { b: 0 }, { b: 0 }, { b: 9 }],
@@ -67,14 +67,14 @@ for (var i = 0; i < level.length; i++) {
 let masLevelGraph = new Graph(levelGraph);
 
 let sizeOneBlock = 32;
-let playerSpeed = 1;
+let playerSpeed = 2;
 
 let player = game.newRectObject({
   x: 0,
   y: 0,
   w: sizeOneBlock,
   h: sizeOneBlock,
-  fillColor: "green",
+  fillColor: "yellow",
 });
 
 
@@ -115,104 +115,175 @@ for (var i = 0; i < level.length; i++) {
             w: sizeOneBlock,
             h: sizeOneBlock,
             fillColor: "red",
-          }), nowX: j, nowY: i, canGo: true, newResult: [], startPos: 0, masPath: 10, canGo: [], delMas: [], testMas: []
+          }), nowX: j, nowY: i, canGo: true, newResult: [], startPos: 0, masPath: 10, canGo: [], delMas: [], testMas: [], goodMas: [], falling: false
         }
       )
     }
   }
 }
 
-enemies[0].canGo.push([enemies[0].nowY, enemies[0].nowX]);
-
-let goodMas = [];
+let enemyCenter = false;
 
 
-//while (enemies[0].canGo[0][0] != player.nowY || enemies[0].canGo[0][1] != player.nowX) {
+function pathFinder() {
+  enemies[0].canGo = [];
+  enemies[0].delMas = [];
+  enemies[0].goodMas = [];
 
-for (var oo = 0; oo < 500; oo++) {
-
-  setTimeout(function timer() {
-
-    let left = false;
-    let right = false;
-    let bottom = false;
-    let top = false;
-
-    let tempMas = [];
+  enemies[0].canGo.push([enemies[0].nowY, enemies[0].nowX]);
 
 
-    if (enemies[0].canGo.length > 0) {
+  while (!enemies[0].falling && enemies[0].canGo.length>0 && (enemies[0].canGo[0][0] != player.nowY || enemies[0].canGo[0][1] != player.nowX)) {
 
-      if (JSON.stringify(enemies[0].delMas).indexOf(JSON.stringify([enemies[0].canGo[0][0], enemies[0].canGo[0][1] - 1])) == -1 &&
-        (level[enemies[0].canGo[0][0] + 1][enemies[0].canGo[0][1]].b == 1 || level[enemies[0].canGo[0][0] + 1][enemies[0].canGo[0][1]].b == 2) &&
-        (level[enemies[0].canGo[0][0]][enemies[0].canGo[0][1] - 1].b == 0 || level[enemies[0].canGo[0][0]][enemies[0].canGo[0][1] - 1].b == 2)) {
-        left = true;
+  //for (var oo = 0; oo < 500; oo++) {
+
+    //setTimeout(function timer() {
+
+      let left = false;
+      let right = false;
+      let bottom = false;
+      let top = false;
+
+      let tempMas = [];
+
+
+      if (enemies[0].canGo.length > 0) {
+
+        if (JSON.stringify(enemies[0].delMas).indexOf(JSON.stringify([enemies[0].canGo[0][0], enemies[0].canGo[0][1] - 1])) == -1 &&
+          (level[enemies[0].canGo[0][0] + 1][enemies[0].canGo[0][1]].b == 1 || level[enemies[0].canGo[0][0] + 1][enemies[0].canGo[0][1]].b == 2) &&
+          (level[enemies[0].canGo[0][0]][enemies[0].canGo[0][1] - 1].b == 0 || level[enemies[0].canGo[0][0]][enemies[0].canGo[0][1] - 1].b == 2)) {
+          left = true;
+        }
+
+
+        if (JSON.stringify(enemies[0].delMas).indexOf(JSON.stringify([enemies[0].canGo[0][0], enemies[0].canGo[0][1] + 1])) == -1 &&
+          (level[enemies[0].canGo[0][0] + 1][enemies[0].canGo[0][1]].b == 1 || level[enemies[0].canGo[0][0] + 1][enemies[0].canGo[0][1]].b == 2) &&
+          (level[enemies[0].canGo[0][0]][enemies[0].canGo[0][1] + 1].b == 0 || level[enemies[0].canGo[0][0]][enemies[0].canGo[0][1] + 1].b == 2)) {
+          right = true;
+        }
+
+
+        if (JSON.stringify(enemies[0].delMas).indexOf(JSON.stringify([enemies[0].canGo[0][0] + 1, enemies[0].canGo[0][1]])) == -1 &&
+          (level[enemies[0].canGo[0][0] + 1][enemies[0].canGo[0][1]].b == 0 || level[enemies[0].canGo[0][0] + 1][enemies[0].canGo[0][1]].b == 2)) {
+          bottom = true;
+        }
+
+
+        if (JSON.stringify(enemies[0].delMas).indexOf(JSON.stringify([enemies[0].canGo[0][0] - 1, enemies[0].canGo[0][1]])) == -1 &&
+          (level[enemies[0].canGo[0][0]][enemies[0].canGo[0][1]].b == 2 && level[enemies[0].canGo[0][0] - 1][enemies[0].canGo[0][1]].b == 2) ||
+          (level[enemies[0].canGo[0][0]][enemies[0].canGo[0][1]].b == 2 && level[enemies[0].canGo[0][0] - 1][enemies[0].canGo[0][1]].b == 0)) {
+          top = true;
+        }
+
+
+
+        function topEnemy() {
+          if (top) {
+            tempMas.push([enemies[0].canGo[0][0] - 1, enemies[0].canGo[0][1]]);
+            enemies[0].testMas.push([enemies[0].canGo[0][0] - 1, enemies[0].canGo[0][1]]);
+          }
+        }
+
+        function bottomEnemy() {
+          if (bottom) {
+            tempMas.push([enemies[0].canGo[0][0] + 1, enemies[0].canGo[0][1]]);
+            enemies[0].testMas.push([enemies[0].canGo[0][0] + 1, enemies[0].canGo[0][1]]);
+
+          }
+        }
+        function leftEnemy() {
+          if (left) {
+            tempMas.push([enemies[0].canGo[0][0], enemies[0].canGo[0][1] - 1]);
+            enemies[0].testMas.push([enemies[0].canGo[0][0], enemies[0].canGo[0][1] - 1]);
+
+          }
+        }
+        function rightEnemy() {
+          if (right) {
+            tempMas.push([enemies[0].canGo[0][0], enemies[0].canGo[0][1] + 1]);
+            enemies[0].testMas.push([enemies[0].canGo[0][0], enemies[0].canGo[0][1] + 1]);
+
+          }
+        }
+
+        if (enemies[0].nowY > player.nowY && enemies[0].nowX > player.nowX) {
+          topEnemy();
+          leftEnemy();
+          bottomEnemy();
+          rightEnemy();
+        }
+        else if (enemies[0].nowY < player.nowY && enemies[0].nowX > player.nowX) {
+          bottomEnemy();
+          leftEnemy();
+          topEnemy();
+          rightEnemy();
+        }
+        else if (enemies[0].nowY > player.nowY && enemies[0].nowX < player.nowX) {
+          topEnemy();
+          rightEnemy();
+          bottomEnemy();
+          leftEnemy();
+        }
+        else if (enemies[0].nowY < player.nowY && enemies[0].nowX < player.nowX) {
+          bottomEnemy();
+          rightEnemy();
+          topEnemy();
+          leftEnemy();
+        }
+        else if (enemies[0].nowY == player.nowY && enemies[0].nowX > player.nowX) {
+          leftEnemy();
+          rightEnemy();
+          
+        }
+        else if (enemies[0].nowY == player.nowY && enemies[0].nowX < player.nowX) {
+          rightEnemy();
+          leftEnemy();
+          bottomEnemy();
+          topEnemy();
+        }
+        else if (enemies[0].nowY == player.nowY && enemies[0].nowX > player.nowX) {
+          leftEnemy();
+          rightEnemy();
+          bottomEnemy();
+          topEnemy();
+        }
+        else if (enemies[0].nowX == player.nowX && enemies[0].nowY > player.nowY) {
+          topEnemy();
+          bottomEnemy();
+          leftEnemy();
+          rightEnemy();
+        }
+        else if (enemies[0].nowX == player.nowX && enemies[0].nowY < player.nowY) {
+          bottomEnemy();
+          topEnemy();
+          leftEnemy();
+          rightEnemy();
+        }
+
+        //console.log(`${enemies[0].nowY} --- ${player.nowY}`)
+
+
+
+
+
+
+        enemies[0].delMas.push(enemies[0].canGo[0]);
+        enemies[0].goodMas.push(enemies[0].canGo[0]);
+
+        enemies[0].canGo.splice(1, 0, ...tempMas);
+
+        enemies[0].canGo.shift();
       }
 
 
-      if (JSON.stringify(enemies[0].delMas).indexOf(JSON.stringify([enemies[0].canGo[0][0], enemies[0].canGo[0][1] + 1])) == -1 &&
-        (level[enemies[0].canGo[0][0] + 1][enemies[0].canGo[0][1]].b == 1 || level[enemies[0].canGo[0][0] + 1][enemies[0].canGo[0][1]].b == 2) &&
-        (level[enemies[0].canGo[0][0]][enemies[0].canGo[0][1] + 1].b == 0 || level[enemies[0].canGo[0][0]][enemies[0].canGo[0][1] + 1].b == 2)) {
-        right = true;
-      }
-
-
-      if (JSON.stringify(enemies[0].delMas).indexOf(JSON.stringify([enemies[0].canGo[0][0] + 1, enemies[0].canGo[0][1]])) == -1 &&
-        (level[enemies[0].canGo[0][0] + 1][enemies[0].canGo[0][1]].b == 0 || level[enemies[0].canGo[0][0] + 1][enemies[0].canGo[0][1]].b == 2)) {
-        bottom = true;
-      }
-
-
-      if (JSON.stringify(enemies[0].delMas).indexOf(JSON.stringify([enemies[0].canGo[0][0] - 1, enemies[0].canGo[0][1]])) == -1 &&
-        (level[enemies[0].canGo[0][0]][enemies[0].canGo[0][1]].b == 2 && level[enemies[0].canGo[0][0] - 1][enemies[0].canGo[0][1]].b == 2) ||
-        (level[enemies[0].canGo[0][0]][enemies[0].canGo[0][1]].b == 2 && level[enemies[0].canGo[0][0] - 1][enemies[0].canGo[0][1]].b == 0)) {
-        top = true;
-      }
 
 
 
 
-      if (top) {
-        tempMas.push([enemies[0].canGo[0][0] - 1, enemies[0].canGo[0][1]]);
-        enemies[0].testMas.push([enemies[0].canGo[0][0] - 1, enemies[0].canGo[0][1]]);
-      }
-
-      if (bottom) {
-        tempMas.push([enemies[0].canGo[0][0] + 1, enemies[0].canGo[0][1]]);
-        enemies[0].testMas.push([enemies[0].canGo[0][0] + 1, enemies[0].canGo[0][1]]);
-
-      }
-      if (left) {
-        tempMas.push([enemies[0].canGo[0][0], enemies[0].canGo[0][1] - 1]);
-        enemies[0].testMas.push([enemies[0].canGo[0][0], enemies[0].canGo[0][1] - 1]);
-
-      }
-      if (right) {
-        tempMas.push([enemies[0].canGo[0][0], enemies[0].canGo[0][1] + 1]);
-        enemies[0].testMas.push([enemies[0].canGo[0][0], enemies[0].canGo[0][1] + 1]);
-
-      }
+    //}, oo * 200);
 
 
-
-
-
-      enemies[0].delMas.push(enemies[0].canGo[0]);
-      goodMas.push(enemies[0].canGo[0]);
-
-      enemies[0].canGo.splice(1, 0, ...tempMas);
-
-      enemies[0].canGo.shift();
-    }
-
-
-
-
-
-
-  }, oo * 200);
-
-
+  }
 }
 
 
@@ -290,6 +361,55 @@ game.newLoop('myGame', function () {
 
 
 
+  if (!enemies[0].falling && enemies[0].nowX == enemies[0].enemy.x/sizeOneBlock && enemies[0].nowY == enemies[0].enemy.y/sizeOneBlock && enemyCenter == false) {
+    
+      pathFinder();
+    
+  }
+
+  //console.log(`${enemies[0].nowX} --- ${enemies[0].enemy.x/sizeOneBlock}`)
+  //console.log(enemies[0].goodMas)
+
+
+  if (enemies[0].goodMas.length>1 && !enemies[0].falling) {
+    enemies[0].enemy.moveTo(pjs.vector.point(enemies[0].goodMas[1][1] * sizeOneBlock, enemies[0].goodMas[1][0] * sizeOneBlock), 1);
+    if (enemies[0].enemy.x/sizeOneBlock == enemies[0].goodMas[1][1] && enemies[0].enemy.y/sizeOneBlock == enemies[0].goodMas[1][0]) {
+      enemies[0].nowY = enemies[0].goodMas[1][0];
+      enemies[0].nowX = enemies[0].goodMas[1][1];
+      enemies[0].goodMas.shift(); 
+    }
+  }
+  
+  if (level[enemies[0].nowY+1][enemies[0].nowX].b == 0) {
+    enemies[0].falling = true;
+    enemyCenter = false;
+  }
+  else {
+    enemies[0].falling = false;
+  }
+
+  if (enemies[0].falling) {
+    enemies[0].goodMas = [];
+    enemies[0].enemy.moveTo(pjs.vector.point(enemies[0].nowX*sizeOneBlock, enemies[0].nowY * sizeOneBlock+sizeOneBlock), 1);
+    enemies[0].nowY = Math.floor(enemies[0].enemy.y/sizeOneBlock);
+  }
+
+
+  
+
+  
+  if (enemies[0].nowX == player.nowX && level[enemies[0].nowY][enemies[0].nowX].b != 2 && !enemies[0].falling) {
+    enemyCenter = true;
+  }
+  if (Math.abs(enemies[0].nowX - player.nowX) > 7 || level[enemies[0].nowY][enemies[0].nowX].b == 2) {
+    enemyCenter = false;
+  }
+
+  
+  
+
+  
+  
 
 
 
@@ -301,18 +421,16 @@ game.newLoop('myGame', function () {
 
 
 
-
-
-  for (var i = 0; i < goodMas.length; i++) {
+  for (var i = 0; i < enemies[0].goodMas.length; i++) {
     //console.log(enemies[0].canGo)
     var zz = game.newRectObject({
-      x: sizeOneBlock * goodMas[i][1],
-      y: sizeOneBlock * goodMas[i][0],
+      x: sizeOneBlock * enemies[0].goodMas[i][1],
+      y: sizeOneBlock * enemies[0].goodMas[i][0],
       w: sizeOneBlock,
       h: sizeOneBlock,
       fillColor: "green",
     });
-    //zz.alpha = 0.9;
+    zz.alpha = 0.7;
     zz.draw();
   }
 
@@ -324,6 +442,7 @@ game.newLoop('myGame', function () {
 
 
   if (player.moving && !player.falling) {
+    
     if (player.arrow == 'right' && level[player.nowY][player.nowX + 1].b != 1) {
       player.moveTo(pjs.vector.point(player.nowX * sizeOneBlock + player.w, player.nowY * sizeOneBlock), playerSpeed);
       if (player.x >= player.nowX * sizeOneBlock + player.w) {
@@ -437,24 +556,17 @@ game.newLoop('myGame', function () {
 
     deleteBlockMas.push([player.nowY + 1, player.nowX + 1]);
 
-    let timer = pjs.OOP.newTimer(2000, function () {
+    let timer2 = pjs.OOP.newTimer(2000, function () {
       level[deleteBlockMas[0][0]][deleteBlockMas[0][1]].b = 1;
       deleteBlockMas.shift();
     })
-    timer.start();
+    timer2.start();
 
   }
 
 
 
-  // pjs.brush.drawText({
-  //   text: "Управление: клавиши D, A, W, S", 
-  //   x: 40,
-  //   y: 0,
-  //   size: 26,
-  //   color: "black",
-  //   alpha: 1
-  // })
+
 
 });
 
